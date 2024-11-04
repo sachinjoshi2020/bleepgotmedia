@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <% if(nav === true) { %>
+    <form
+      action="/profileUpdate"
+      id="userprofile"
+      method="post"
+      enctype="multipart/form-data"
+      hidden
+    >
+      <input type="file" name="userprofile" accept="image/*" />
+    </form>
+    <nav class="navBrand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="logo" />
+      </div>
+
+     <form action="/search" method="get" class="formSearch">
+      <div class="search_state">
+        <i class="ri-search-line"></i>
+        <input name="quries" type="text" placeholder="Search Picture or Video" />
+      </div>
+      <button class="searchBtn"><i class="ri-search-line"></i></button>
+     </form>
+
+      <small class="userLine"><%= user.username %></small>
+      <div class="adminProfile">
+        <img
+          src="<%= user?.profileImage ? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/10337/10337609.png' %>"
+          alt=""
+        />
+      </div>
+      <button class="uploaduserProfile"><i class="ri-add-line"></i></button>
+    </nav>
+
+    <% } %>
+
+    <script>
+      let uploaduserProfile = document.querySelector(".uploaduserProfile");
+      let userprofileInput = document.querySelector("#userprofile input");
+      let userProfileForm = document.querySelector("#userprofile");
+      let adminProfile = document.querySelector(".adminProfile img");
+      uploaduserProfile.addEventListener("click", function () {
+        userprofileInput.click();
+      });
+
+      userprofileInput.addEventListener("change", function (e) {
+        let imgFile = userprofileInput.files[0];
+        adminProfile.src = URL.createObjectURL(imgFile);
+        if (imgFile) {
+          userProfileForm.submit();
+        }
+      });
+    </script>
+

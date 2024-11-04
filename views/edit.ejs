@@ -1,0 +1,31 @@
+<%- include('partial/header') %>
+
+<form class="updateProfileform" action="/editProfile" method="post" enctype="multipart/form-data">
+    <h2>Update Profile</h2>
+    <input id="image" type="file" name="image" accept="image/*" hidden>
+
+    <div class="imageCircle">
+        <img src="<%= user?.profileImage ?  '/uploads/' +  user.profileImage : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' %>" alt="">
+    </div>
+
+    <input type="text" placeholder="username" name="username" value="<%= user.username%>">
+    <input type="text" placeholder="name" name="name" value="<%= user.name%>">
+    <button>Update Profile</button>
+</form>
+
+<script>
+    let imageCircle = document.querySelector('.imageCircle img');
+    let userImage = document.getElementById('image');
+    imageCircle.addEventListener('click', () => {
+        userImage.click();
+    });
+
+    userImage.addEventListener('change', () => {
+        let userProfile = userImage.files[0];
+        
+        imageCircle.src = URL.createObjectURL(userProfile)
+        
+    })
+</script>
+
+<%- include('partial/footer') %>

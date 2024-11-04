@@ -1,0 +1,137 @@
+<%- include('partial/header') %>
+
+<div class="mainContainer">
+  <button class="rightArrow"><i class="ri-arrow-right-s-line"></i></button>
+  <div class="leftNav">
+    <button class="times"><i class="ri-close-line"></i></button>
+    <div class="userimgprofile">
+      <img
+        src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/10337/10337609.png' %>"
+        alt=""
+      />
+    </div>
+    <div class="editProgileUser">
+      <a href=""><i class="ri-pencil-fill"></i></a>
+    </div>
+
+    <p class="userText" style="color: #fff">Welcome <%= user.username %></p>
+
+    <p class="follwersuser text-white mt-2 text-sm">100K Followers</p>
+
+    <a class="updatePostSet" href="/profile">
+      <i class="ri-home-2-line"></i>Home</a
+    >
+
+    <a class="updatePostSet" href="/updatePost">
+      <i class="ri-upload-cloud-2-line"></i> Upload Picture</a
+    >
+
+    <a class="updatePostSet" href="/updateReel">
+      <i class="ri-upload-cloud-2-line"></i> Upload Reel</a
+    >
+
+    <a class="updatePostSet" href="/myPosts"
+      ><i class="ri-image-2-fill"></i> My Stuff</a
+    >
+
+    <a class="updatePostSet" href="/reels"
+      ><i class="ri-video-line"></i> Reels</a
+    >
+    <a class="updatePostSet" href="/myprofile"
+      ><i class="ri-user-line"></i> My Profile</a
+    >
+
+    <a class="updatePostSet" href=""><i class="ri-star-line"></i> My Fev</a>
+    <a class="updatePostSet" href=""
+      ><i class="ri-notification-3-fill"></i>Notifation</a
+    >
+
+    <a class="updatePostSet" href="">
+      <i class="ri-history-line"></i> Recent Posts</a
+    >
+    <a class="updatePostSet" href="">
+      <i class="ri-share-fill"></i> Share Profile</a
+    >
+    <a class="updatePostSet" href="/payment">
+      <i class="ri-money-dollar-circle-line"></i> Payment</a
+    >
+    <a class="updatePostSet" href="/setting">
+      <i class="ri-settings-2-line"></i>Settings</a
+    >
+
+    <a class="logoutSet" a href="/logout"
+      ><i class="ri-logout-box-line"></i> Logout</a
+    >
+  </div>
+  <div class="img_Dashboard">
+    <form class=
+    "text-white  shadow-md p-20 rounded shadow-md w-[600px] relative" style="left: 50%; transform: translateX(-50%);">
+        <h2 class="text-2xl font-medium mb-6">Edit <span class="font-thin text-green-500"><%= user.username %></span> Profile</h2>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-400" for="username">Username</label>
+            <input type="text" id="username" name="username" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required value="<%=  user.username %>">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-400" for="old-password">Old Password</label>
+            <input type="password" id="old-password" name="old-password" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-400" for="new-password">New Password</label>
+            <input type="password" id="new-password" name="new-password" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-400" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required value="<%=  user.email %>">
+        </div>
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-400" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-400" for="gender">Gender</label>
+            <select id="gender" name="gender" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-400" for="description">Short Description</label>
+            <textarea id="description" name="description" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Save Changes</button>
+    </form>
+    </div>
+
+   
+  </div>
+</div>
+
+
+<script>
+
+  let times = document.querySelector(".times");
+  let leftNav = document.querySelector(".leftNav");
+  let rightArrow = document.querySelector(".rightArrow");
+  times.addEventListener("click", function () {
+    leftNav.style.width = "0px";
+  });
+
+  rightArrow.addEventListener("click", function () {
+    leftNav.style.width = "280px";
+  });
+
+  leftNav.addEventListener("blur", function (e) {
+    leftNav.style.width = "0px";
+  });
+</script>
+
+<%- include('partial/footer') %>

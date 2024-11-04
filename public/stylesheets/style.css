@@ -1,0 +1,828 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+}
+
+body {
+  background-color: #000000ee;
+}
+
+body::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
+}
+
+
+.hiddenTyping{
+  display: none;
+}
+
+/* login and register form is started now */
+
+.mainIndex {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.logoSet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #fff;
+  position: relative;
+}
+
+.logoSet img {
+  width: 65px;
+
+}
+
+.logoSet h2 {
+  margin-left: -15px;
+}
+
+.hrForm {
+  margin-top: 40px;
+}
+
+.loginSet {
+  margin: auto;
+  width: 400px;
+  padding: 1px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.innerAnimation {
+  width: 700px;
+  position: absolute;
+  height: 700px;
+  border-radius: 8px;
+  padding: 2px;
+  z-index: -1;
+  background: conic-gradient(rgb(0, 225, 255), transparent, transparent, transparent);
+  animation: colorRotation 2s linear infinite;
+}
+
+@keyframes colorRotation {
+  100% {
+    rotate: -360deg;
+  }
+}
+
+.formControl {
+  margin: 20px 0;
+}
+
+.formControl label {
+  color: #fff;
+}
+
+.loginSet input {
+  width: 100%;
+  height: 45px;
+  outline: none;
+  margin-top: 10px;
+  border-radius: 7px;
+  color: #fff;
+  padding: 0 10px;
+  background-color: transparent;
+  border: 1px solid #ffffff86;
+}
+
+::placeholder {
+  color: #fff;
+}
+
+.submitRate {
+  width: 100%;
+
+}
+
+.submitRate button {
+  width: 100%;
+  height: 45px;
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(27, 133, 255);
+  color: #fff;
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
+  opacity: .5;
+  transition-duration: 500ms;
+}
+
+.submitRate button:hover {
+  opacity: 1;
+  scale: 1.1;
+}
+
+.submitRate button::before {
+  position: absolute;
+  content: '';
+  width: 30px;
+  height: 100px;
+  background-color: #ffffffd0;
+  top: -50%;
+  left: -12%;
+  rotate: -23deg;
+  transition-duration: 500ms;
+
+}
+
+.submitRate button:hover::before {
+  left: 115%;
+}
+
+.submitRate p:first-child {
+  font-size: .9rem;
+  width: 100%;
+  text-align: right;
+}
+
+.submitRate p a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.submitRate p:last-child {
+  color: #fff;
+  margin-top: 10px;
+}
+
+
+.submitRate p:last-child a {
+  color: rgb(0, 153, 255);
+  font-weight: 700;
+}
+
+.innerDiv {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  border-radius: 5px;
+  z-index: 99;
+}
+
+
+/* login and register form is ended */
+
+/* ----------------------------------------------- */
+
+
+/* nav panel is started */
+
+.navBrand {
+  width: 100%;
+  background-color: #131212;
+  display: flex;
+  backdrop-filter: blur(6px);
+  padding: 15px 20px;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+
+
+.logo img {
+  width: 60px;
+}
+
+
+.formSearch {
+  width: 60%;
+  position: relative;
+}
+
+.search_state {
+  width: 100%;
+  position: relative;
+}
+
+.searchBtn {
+  position: absolute;
+  background-color: #d8d4d4;
+  z-index: 99;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 12%;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.userLine {
+  position: absolute;
+  color: #fff;
+  right: 3%;
+  width: 15%;
+  bottom: 20px;
+  padding-left: 20px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ffffff8f;
+}
+
+.userLine::before {
+  position: absolute;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: #eeeeee;
+  border-radius: 50%;
+  left: -10px;
+  top: 47%;
+}
+
+.search_state i {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+}
+
+.search_state input {
+  width: 100%;
+  height: 45px;
+  border-radius: 40px;
+  border: 1px solid #bbbbbb73;
+  outline: none;
+  background-color: transparent;
+  padding: 0 50px;
+  color: #fff;
+}
+
+.adminProfile {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #ffffff81;
+  padding: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminProfile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.uploaduserProfile {
+  position: absolute;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  right: 1%;
+  top: 55%;
+  cursor: pointer;
+}
+
+
+/* nav panel is ended */
+
+
+/* img Panel Started */
+
+.mainContainer {
+  width: 100%;
+
+  display: flex;
+}
+
+
+.leftNav {
+  width: 20%;
+  height: 100%;
+  background-color: #110f0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 8px;
+  position: relative;
+  transition-duration: 400ms;
+  /* border-right: 1px solid #ffffff33; */
+}
+
+.userimgprofile {
+  width: 70px;
+  height: 70px;
+  /* overflow: hidden; */
+  margin: 20px 0;
+}
+
+.userimgprofile img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.updatePostSet {
+  margin-top: 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 50%;
+  margin-left: -57px;
+  padding: 5px 0px;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 5px;
+  font-size: .8rem;
+}
+
+.updatePostSet i {
+  margin-right: 5px;
+}
+
+.userText {
+  text-transform: capitalize;
+}
+
+.followersuser {
+  margin-top: 5px;
+  color: #fff;
+  font-size: .8rem;
+  opacity: .8;
+  text-transform: capitalize;
+
+}
+
+.logoutSet {
+  margin-top: 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(255, 60, 0);
+  padding: 10px 30px;
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  transition-duration: 300ms;
+  margin-left: -57px;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+.editProgileUser a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  position: absolute;
+  top: 8%;
+  right: 36%;
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.img_Dashboard {
+  width: 80%;
+  height: 100%;
+  padding: 5px;
+}
+
+.imgTag {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.swiper {
+  width: 100%;
+
+}
+
+.swiper-slide {
+  width: auto !important;
+  background-color: rgba(195, 195, 206, 0.212);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 400ms;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+.imgContainer {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  gap: 30px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.imgContainer::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
+}
+
+
+.imgBox {
+  position: relative;
+  color: #fff;
+}
+
+.imgBox p {
+  margin: 5px 0;
+}
+
+.imgBox .postUser {
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.imgBox .postUser img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.postControl button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #ffff;
+}
+
+.userProfileData {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userProfileData small {
+  opacity: .5;
+}
+
+.createPost form {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.createPost form input::placeholder {
+  color: #000;
+}
+
+.createPost form h2 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.createPost form input {
+  width: 35%;
+  height: 45px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: 1px solid #ffffff55;
+  padding: 0 20px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.createPost form input::placeholder {
+  color: #fff;
+  text-transform: capitalize;
+
+}
+
+.postStateImg {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.postStateImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .5;
+}
+
+.postImgCircle {
+  position: relative;
+}
+
+.uploadPostPic {
+  z-index: 99;
+  position: absolute;
+  right: 0;
+  bottom: 16%;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  color: #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.createPost .upPost {
+  width: 35%;
+  height: 45px;
+  background-color: #316caf;
+  color: #fff;
+  border-radius: 5px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+/* img Panel ended */
+
+.rightArrow {
+  display: none;
+}
+
+.times {
+  display: none;
+}
+
+.reelsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+
+.reels {
+  width: 150px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.reelState {
+  padding: 3px;
+  border: 1px solid #ffffff21;
+
+}
+
+.reels video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+
+}
+
+.reelState {
+  color: #fff;
+}
+
+.payment-form {
+  color: #fff;
+}
+
+
+.testmonials{
+  height: 40px;
+  overflow-y: hidden;
+  transition-duration: 300ms;
+}
+.showMainContent{
+  height: 120px;
+  transition-duration: 300ms;
+}
+
+.enchcked{
+  width: 37px;
+  height: 21px;
+  appearance: none;
+  border: 1px solid #ffffff75;
+  border-radius: 40px;
+  position: relative;
+}
+
+.enchcked::before{
+  width: 17px;
+  height: 17px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  content: '';
+  left:1px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition-duration: 500ms;
+  cursor: pointer;
+}
+
+.enchcked:checked::before{
+  left: 50%;
+  background-color: #80aee2;
+}
+
+
+/* start the media queries */
+@media (max-width : 768px) {
+  .userLine {
+    display: none;
+  }
+
+  .uploaduserProfile {
+    right: 3%;
+  }
+
+  .leftNav {
+    width: 0%;
+    position: fixed;
+    background-color: #000;
+    z-index: 99;
+    height: 100vh;
+    top: 0;
+    font-size: .8rem;
+    overflow-y: scroll;
+  }
+
+  .img_Dashboard {
+    width: 100%;
+  }
+
+  .imgContainer {
+    justify-content: center;
+  }
+
+  .imgContainer {
+    gap: 40px;
+    max-height: 800px;
+  }
+
+  .search_state {
+    /* display: none; */
+  }
+
+  .imgContainer {
+    padding: 5px;
+  }
+
+  .times {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    color: #fff;
+    font-size: 1.5rem;
+    display: block;
+  }
+
+  .rightArrow {
+    position: fixed;
+    top: 25px;
+    left: 10px;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    color: #fff;
+    font-size: 1.5rem;
+    z-index: 99;
+    display: block;
+  }
+
+  .createPost form input {
+    width: 85%;
+  }
+
+  .createPost .upPost {
+    width: 85%;
+  }
+
+
+
+  .imgUserCircle img {
+    display: block;
+  }
+
+  .editProgileUser a {
+    top: 12%;
+    right: 34%;
+
+  }
+
+  .reelsContainer {
+    padding: 6px;
+    gap: 22px;
+  }
+
+  .searchBtn {
+    width: 25%;
+  }
+  .search_state input {
+    font-size: .8rem;
+    height: 35px;
+    padding: 0 10px;
+
+  }
+  .search_state i {
+    display: none;
+  }
+  .formSearch {
+    width: 70%;
+    margin-right: 10px;
+  
+  }
+}
+
+/* end the media queries */
+
+
+.chat_area{
+  /* background-color: red; */
+  padding: 2px;
+  height: 340px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.recevied{
+  background-color: rgb(62, 62, 126);
+  float: left;
+  clear: both;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.sent{
+  background-color: rgb(46, 37, 37);
+  float: right;
+  clear: both;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+
+.chatShowSet{
+  display: none;
+}
+
+.showChatArea{
+  display: block;
+}
+
+#hidearea{
+  z-index: 99;
+}

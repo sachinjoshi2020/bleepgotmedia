@@ -1,0 +1,174 @@
+<%- include('partial/header') %>
+
+    <div class="mainContainer">
+        <button class="rightArrow"><i class="ri-arrow-right-s-line"></i></button>
+        <div class="leftNav">
+            <button class="times"><i class="ri-close-line"></i></button>
+            <div class="userimgprofile">
+                <img src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/10337/10337609.png' %>"
+                    alt="" />
+            </div>
+            <div class="editProgileUser">
+                <a href=""><i class="ri-pencil-fill"></i></a>
+            </div>
+
+
+            <p class="userText" style="color: #fff;">Welcome <%= user.username %>
+            </p>
+
+            <p class="follwersuser text-white mt-2 text-sm">100K Followers</p>
+
+            <a class="updatePostSet" href="/profile">
+                <i class="ri-home-2-line"></i>Home</a>
+
+            <a class="updatePostSet" href="/updatePost"> <i class="ri-upload-cloud-2-line"></i> Upload Picture</a>
+
+            <a class="updatePostSet" href="/updateReel"> <i class="ri-upload-cloud-2-line"></i> Upload Reel</a>
+
+
+
+            <a class="updatePostSet" href="/myPosts"><i class="ri-image-2-fill"></i> My Stuff</a>
+
+            <a class="updatePostSet" href="/reels"><i class="ri-video-line"></i> Reels</a>
+
+            <a class="updatePostSet" href=""><i class="ri-star-line"></i> My Fev</a>
+            <a class="updatePostSet" href=""><i class="ri-notification-3-fill"></i>Notifation</a>
+
+            <a class="updatePostSet" href=""> <i class="ri-history-line"></i> Recent Posts</a>
+            <a class="updatePostSet" href=""> <i class="ri-share-fill"></i> Share Profile</a>
+            <a class="updatePostSet" href="/payment"> <i class="ri-money-dollar-circle-line"></i> Payment</a>
+            <a class="updatePostSet" href=""> <i class="ri-settings-2-line"></i>Settings</a>
+
+            <a class="logoutSet" a href="/logout"><i class="ri-logout-box-line"></i> Logout</a>
+
+        </div>
+        <div class="img_Dashboard">
+            <div class="imgTag">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">Nature</div>
+                        <div class="swiper-slide">Car</div>
+                        <div class="swiper-slide">Bike</div>
+                        <div class="swiper-slide">Home</div>
+                        <div class="swiper-slide">Sparrow</div>
+                        <div class="swiper-slide">Technology</div>
+                        <div class="swiper-slide">Birds</div>
+                        <div class="swiper-slide">Flowers</div>
+                        <div class="swiper-slide">Dog</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="imgSearch flex gap-5 mt-2 flex-wrap justify-center">
+                <% if(posts.length> 0) { %>
+                    <% posts.forEach(item=> { %>
+                        <div class="boxScout flex-col p-2 rounded-md" style="border: 1px solid #ffffff3a;">
+                            <img src="<%= item?.postImage ? 'uploads/' + item.postImage : 'https://i.sstatic.net/kOnzy.gif'  %>" alt="no photo found!" width="170px"
+                                class="h-[200px] object-cover" />
+                            <p style="color: #fff;">
+                                <%= item.title %>
+                            </p>
+
+                            <div class="flex justify-between items-center">
+                                <small style="position: relative;top: 2px; opacity: .5;" class="text-white">
+                                    <%= item.user?.username? item.user.username : 'unknown User' %>
+                                </small>
+
+                                <img src="<%= item.user?.profileImage ? 'uploads/' + item.user.profileImage : 'https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg'  %>"
+                                    alt="" width="25px" class="rounded-full object-cover h-[25px]" />
+                            </div>
+
+
+                            <div class="flex justify-between items-center text-white text-sm opacity-60 mt-3">
+                                <div class="flex gap-1  items-center">
+                                    <form action="/likePost/<%= item?._id %>">
+                                        <input type="hidden" name="postId" value="<%= item._id %>">
+                                        <% if(item.likesData.includes(user._id)) { %>
+                                            <button style="color: red;"><i class="ri-heart-3-fill"></i></button>
+                                            <% } else { %>
+                                                <button style="color: white;"><i class="ri-heart-3-line"></i></button>
+                                                <% } %>
+                                    </form>
+
+                                    <button
+                                        onclick="shareImage(`<%= item.postImage ? 'uploads/' + item.postImage : '' %>, <%= item.title %>`)">
+                                        <i class="ri-share-line"> </i></button>
+
+                                    <a href="<%= item?.postImage ? 'uploads/' + item.postImage : '' %>" download>
+                                        <button><i class="ri-download-line"></i></button>
+                                    </a>
+                                </div>
+                                <small class="text-white gap-4 opacity-60">
+                                    <span>
+                                        <%= item.likesData.length %>
+                                    </span> Likes
+                                </small>
+                            </div>
+
+
+                        </div>
+                        <% }) %>
+                            <% } else { %>
+                                <p class="text-white text-center mt-10 w-screen">No Post Found</p>
+                                <% } %>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        let times = document.querySelector('.times');
+        let leftNav = document.querySelector('.leftNav');
+        let rightArrow = document.querySelector('.rightArrow');
+        times.addEventListener('click', function () {
+            leftNav.style.width = "0px"
+        })
+
+        rightArrow.addEventListener('click', function () {
+            leftNav.style.width = "280px"
+        })
+
+        leftNav.addEventListener('blur', function (e) {
+            leftNav.style.width = "0px"
+        })
+
+
+        async function shareImage(imageUrl, title) {
+            if (navigator.share) {
+                try {
+                    const response = await fetch(imageUrl);
+                    const blob = await response.blob();
+                    const file = new File([blob], title + '.jpg', { type: 'image/jpeg' });
+
+                    await navigator.share({
+                        title: title,
+                        text: 'Check out this image!',
+                        files: [file],
+                        url: window.location.href // You can set a specific URL or use the current page
+                    });
+                    console.log('Image shared successfully');
+                } catch (error) {
+                    console.error('Error sharing:', error);
+                }
+            } else {
+                alert('Sharing not supported on this browser. Please copy the link instead.');
+            }
+        }
+    </script>
+
+    <%- include('partial/footer') %>

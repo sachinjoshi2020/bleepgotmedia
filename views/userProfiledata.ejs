@@ -1,0 +1,634 @@
+<%- include('partial/header') %>
+
+<div class="mainContainer">
+  <button class="rightArrow"><i class="ri-arrow-right-s-line"></i></button>
+  <div class="leftNav">
+    <button class="times"><i class="ri-close-line"></i></button>
+
+    <a class="updatePostSet" href="/profile">
+      <i class="ri-home-2-line"></i>Home</a
+    >
+
+    <a class="updatePostSet" href="/updatePost">
+      <i class="ri-upload-cloud-2-line"></i> Upload Picture</a
+    >
+
+    <a class="updatePostSet" href="/updateReel">
+      <i class="ri-upload-cloud-2-line"></i> Upload Reel</a
+    >
+
+    <a class="updatePostSet" href="/myPosts"
+      ><i class="ri-image-2-fill"></i> My Stuff</a
+    >
+
+    <a class="updatePostSet" href="/reels"
+      ><i class="ri-video-line"></i> Reels</a
+    >
+    <a class="updatePostSet" href="/myprofile"
+      ><i class="ri-user-line"></i> My Profile</a
+    >
+
+    <a class="updatePostSet" href=""><i class="ri-star-line"></i> My Fev</a>
+    <a class="updatePostSet" href=""
+      ><i class="ri-notification-3-fill"></i>Notifation</a
+    >
+
+    <a class="updatePostSet" href="">
+      <i class="ri-history-line"></i> Recent Posts</a
+    >
+    <a class="updatePostSet" href="">
+      <i class="ri-share-fill"></i> Share Profile</a
+    >
+    <a class="updatePostSet" href="/payment">
+      <i class="ri-money-dollar-circle-line"></i> Payment</a
+    >
+    <a class="updatePostSet" href="/setting">
+      <i class="ri-settings-2-line"></i>Settings</a
+    >
+
+    <a class="logoutSet" a href="/logout"
+      ><i class="ri-logout-box-line"></i> Logout</a
+    >
+  </div>
+
+  <div class="flex flex-col w-full items-center gap-8 p-10 px-20">
+    <div class="profileheader flex w-full items-center flex-col gap-8">
+      <div class="flex flex-col items-center justify-center relative w-[200px]">
+        <img
+          src="<%= user.profileImage? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' %>"
+          alt=""
+          class="w-[140px] h-[140px] object-cover rounded-full border-2 p-2 border-zinc-600"
+        />
+      </div>
+
+      <h2 class="text-white text-center text-3xl capitalize">
+        Welcome - Ankit Ji
+        <br />
+        <small class="text-yellow-500" style="font-size: 1rem"
+          >Followers : 99990K</small
+        >
+      </h2>
+
+      <button
+        class="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
+      >
+        <i class="ri-user-follow-line mr-2"></i>
+        Follow
+      </button>
+
+      <p class="text-justify text-white opacity-60" style="letter-spacing: 1px">
+        <q id="splitter">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. A, totam sed
+          quam vero, placeat omnis in at libero qui laudantium molestias ut
+          ratione, voluptatem sit sint odit voluptate temporibus architecto.
+        </q>
+      </p>
+    </div>
+    <div class="imgContainer pl-10 justify-start">
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+      <div class="imgBox">
+        <div class="postUser">
+          <img
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </div>
+        <small style="position: relative; top: 2px; opacity: 0.5"
+          >ankit jangir</small
+        >
+        <p
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          ankit jangir
+          <img
+            style="
+              object-fit: cover;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            "
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+            alt=""
+          />
+        </p>
+  
+        <div class="userProfileData">
+          <div class="postControl flex gap-2">
+  
+             
+  
+              <button style="color: red">
+                <i class="ri-heart-3-fill"></i>
+              </button>
+            
+            <button><i class="ri-share-line"></i></button>
+            <button><i class="ri-download-line"></i></button>
+          </div>
+  
+          <small>Likes</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+
+  let times = document.querySelector(".times");
+  let leftNav = document.querySelector(".leftNav");
+  let rightArrow = document.querySelector(".rightArrow");
+  times.addEventListener("click", function () {
+    leftNav.style.width = "0px";
+  });
+
+  rightArrow.addEventListener("click", function () {
+    leftNav.style.width = "280px";
+  });
+
+  leftNav.addEventListener("blur", function (e) {
+    leftNav.style.width = "0px";
+  });
+
+  let splitter = document.getElementById("splitter");
+  let qString = splitter.textContent;
+
+  let resultSplit = qString.split(" ").slice(0, 15).join(" ");
+
+  splitter.innerHTML = `${resultSplit}....`;
+</script>
+
+<%- include('partial/footer') %>

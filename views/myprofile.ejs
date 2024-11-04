@@ -1,0 +1,175 @@
+<%- include('partial/header') %>
+
+<div class="mainContainer">
+  <button class="rightArrow"><i class="ri-arrow-right-s-line"></i></button>
+  <div class="leftNav">
+    <button class="times"><i class="ri-close-line"></i></button>
+
+    <a class="updatePostSet" href="/profile">
+      <i class="ri-home-2-line"></i>Home
+    </a>
+
+    <a class="updatePostSet" href="/updatePost">
+      <i class="ri-upload-cloud-2-line"></i> Upload Picture
+    </a>
+
+    <a class="updatePostSet" href="/updateReel">
+      <i class="ri-upload-cloud-2-line"></i> Upload Reel
+    </a>
+
+    <a class="updatePostSet" href="/myPosts">
+      <i class="ri-image-2-fill"></i> My Stuff
+    </a>
+
+    <a class="updatePostSet" href="/reels">
+      <i class="ri-video-line"></i> Reels
+    </a>
+    <a class="updatePostSet" href="/myprofile">
+      <i class="ri-user-line"></i> My Profile
+    </a>
+
+    <a class="updatePostSet" href="">
+      <i class="ri-star-line"></i> My Favorites
+    </a>
+    <a class="updatePostSet" href="">
+      <i class="ri-notification-3-fill"></i> Notifications
+    </a>
+
+    <a class="updatePostSet" href="">
+      <i class="ri-history-line"></i> Recent Posts
+    </a>
+    <a class="updatePostSet" href="">
+      <i class="ri-share-fill"></i> Share Profile
+    </a>
+    <a class="updatePostSet" href="/payment">
+      <i class="ri-money-dollar-circle-line"></i> Payment
+    </a>
+    <a class="updatePostSet" href="/setting">
+      <i class="ri-settings-2-line"></i> Settings
+    </a>
+
+    <a class="logoutSet" href="/logout">
+      <i class="ri-logout-box-line"></i> Logout
+    </a>
+  </div>
+
+  <div class="flex flex-col w-full items-center gap-8 p-10 px-20">
+    <div class="profileheader flex w-full items-center flex-col gap-8">
+      <div class="flex flex-col items-center justify-center relative w-[200px]">
+        <img
+          src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' %>"
+          alt=""
+          class="w-[140px] h-[140px] object-cover rounded-full border-2 p-2 border-zinc-600"
+        />
+        <button
+          class="absolute z-99 w-[40px] h-[40px] bg-white text-black rounded-full bottom-0 right-[29px]"
+        >
+          <i class="ri-pencil-line"></i>
+        </button>
+      </div>
+
+      <h2 class="text-white text-center text-3xl capitalize">
+        Welcome <%= user.username %>
+        <br />
+        <small class="text-yellow-500 flex gap-8 justify-center items-center" style="font-size: 1rem">Followers: <%= user.followers.length %> <span class="text-green-500">Following : <%= user.following.length %> </span></small>
+      </h2>
+
+      <div class="flex justify-center mt-4">
+        <a
+          href="/editSelfProfile"
+          class="bg-blue-500 text-white font-medium rounded-md px-10 py-4 hover:bg-blue-600 transition duration-200"
+        >
+          Edit Profile
+        </a>
+      </div>
+
+      <p class="text-center text-white opacity-60" style="letter-spacing: 1px">
+        <q>
+          Unleash Your Creativity with Our Photo Uploading Platform! Capture and
+          share your memories effortlessly—join our vibrant community and
+          transform your snapshots into stunning galleries today!
+        </q>
+      </p>
+    </div>
+
+    <div class="bodyProfile w-full">
+      <form method="get" action="/searchResultuser" class="flex items-center w-full sticky top-0 z-99">
+        <input
+          type="text"
+          name="searchq"
+          class="w-full text-white border-gray-800 bg-gray-600 rounded-l-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100"
+          placeholder="Search Users"
+        />
+        <button
+          class="w-[160px] cursor-pointer bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-r-lg p-2 hover:from-blue-600 hover:to-purple-600"
+        >
+          Search
+        </button>
+      </form>
+
+      <div class="mt-10">
+        <ul class="flex flex-wrap gap-4 justify-start w-full">
+          <% userAll.forEach(item => { %>
+          <a href="/userProfiledata" class="">
+            <li class="flex w-[150px] flex-col justify-center items-center gap-4 p-4 text-white duration-200 hover:bg-gray-700 border border-gray-600 rounded-md">
+              <img
+                src="<%= item.profileImage ? 'uploads/' + item.profileImage : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' %>"
+                alt="User"
+                class="rounded-full w-[50px] h-[50px] object-cover border-2 border-gray-800"
+              />
+              <div class="text-center">
+                <h2 class="text-sm font-medium"><%= item.username %></h2>
+                <span class="text-green-500 text-sm">Active</span>
+              </div>
+
+              <% if (currentUser.following.includes(item._id)) { %>
+              <form action="unfollow/<%= item._id %>" method="POST" class="w-full">
+                <button
+                  class="w-full cursor-pointer bg-gradient-to-r from-red-600 to-purple-700 text-black font-medium rounded-md p-2 hover:from-blue-600 hover:to-purple-300 hover:text-white"
+                >
+                  Unfollow
+                </button>
+              </form>
+              <% } else { %>
+              <form action="follow/<%= item._id %>" method="POST" class="w-full">
+                <button
+                  class="w-full cursor-pointer bg-gradient-to-r from-blue-100 to-purple-200 text-black font-medium rounded-md p-2 hover:from-blue-600 hover:to-purple-300 hover:text-white"
+                >
+                  Follow +
+                </button>
+              </form>
+              <% } %>
+            </li>
+          </a>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+
+  let times = document.querySelector(".times");
+  let leftNav = document.querySelector(".leftNav");
+  let rightArrow = document.querySelector(".rightArrow");
+  times.addEventListener("click", function () {
+    leftNav.style.width = "0px";
+  });
+
+  rightArrow.addEventListener("click", function () {
+    leftNav.style.width = "280px";
+  });
+</script>
+
+<%- include('partial/footer') %>

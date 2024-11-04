@@ -1,0 +1,160 @@
+<%- include('partial/header') %>
+
+<style>
+  .payment-form {
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #2c2c2c;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .payment-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  #payment-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #card-element {
+    padding: 16px;
+    border: 2px solid #444444;
+    border-radius: 8px;
+    background-color: #3a3a3a;
+    margin-bottom: 25px;
+    transition: border-color 0.3s ease;
+  }
+
+  #card-element:focus {
+    border-color: #6c63ff;
+    outline: none;
+  }
+
+  #card-errors {
+    color: #ff6b6b;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  #submit-button {
+    background-color: #6c63ff;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  #submit-button:hover {
+    background-color: #5a52d5;
+    transform: translateY(-2px);
+  }
+
+  #submit-button:disabled {
+    background-color: #4a4a4a;
+    cursor: not-allowed;
+  }
+
+  .card-icon {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .card-icon img {
+    height: 24px;
+    margin-left: 8px;
+  }
+ 
+</style>
+
+
+<div class="mainContainer">
+  <div class="payment-form">
+    <h2>Make a Payment</h2>
+    <form id="payment-form">
+      <div id="card-element">
+        <!-- A Stripe Element will be inserted here. -->
+      </div>
+
+      <!-- Used to display form errors. -->
+      <div id="card-errors" role="alert"></div>
+
+      <button id="submit-button">Pay Now</button>
+    </form>
+
+    <div class="qr-code-container">
+      <h3>Or Scan QR Code to Pay</h3>
+      <div id="qrcode">
+      <!-- QR Code will be generated here -->
+      <img id="qr-code" alt="QR Code for Payment" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Create a Stripe client.
+  var stripe = Stripe('<%= process.env.STRIPE_KEY %>');
+
+  // Create an instance of Elements.
+  var elements = stripe.elements();
+
+  // Create an instance of the card Element.
+  var card = elements.create('card');
+
+  // Add an instance of the card Element into the `card-element` <div>.
+  card.mount('#card-element');
+
+  // Handle real-time validation errors from the card Element.
+  card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+  });
+
+  // Handle form submission.
+  var form = document.getElementById('payment-form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        // Inform the user if there was an error.
+        var errorElement = document.getElementById('card-errors');
+        errorElement.textContent = result.error.message;
+      } else {
+        // Send the token to your server.
+        stripeTokenHandler(result.token);
+      }
+    });
+  });
+
+  // Submit the form with the token ID.
+  function stripeTokenHandler(token) {
+    // Insert the token ID into the form so it gets submitted to the server
+    var form = document.getElementById('payment-form');
+    var hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('value', token.id);
+    form.appendChild(hiddenInput);
+
+    // Submit the form
+    form.submit();
+  }
+</script>

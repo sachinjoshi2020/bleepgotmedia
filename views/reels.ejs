@@ -1,0 +1,126 @@
+<%- include('partial/header') %>
+
+    <div class="mainContainer">
+        <button class="rightArrow"><i class="ri-arrow-right-s-line"></i></button>
+        <div class="leftNav">
+            <button class="times"><i class="ri-close-line"></i></button>
+            <div class="userimgprofile">
+                <img src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/10337/10337609.png' %>"
+                    alt="" />
+            </div>
+            <div class="editProgileUser">
+                <a href=""><i class="ri-pencil-fill"></i></a>
+            </div>
+
+
+            <p class="userText" style="color: #fff;">Welcome <%= user.username %>
+            </p>
+
+            <p class="follwersuser text-white mt-2 text-sm">100K Followers</p>
+
+            <a class="updatePostSet" href="/profile">
+                <i class="ri-home-2-line"></i>Home</a>
+
+            <a class="updatePostSet" href="/updatePost"> <i class="ri-upload-cloud-2-line"></i> Upload Picture</a>
+
+            <a class="updatePostSet" href="/updateReel"> <i class="ri-upload-cloud-2-line"></i> Upload Reel</a>
+
+            <a class="updatePostSet" href="/myPosts"><i class="ri-image-2-fill"></i> My Stuff</a>
+
+            <a class="updatePostSet" href="/reels"><i class="ri-video-line"></i> Reels</a>
+
+            <a class="updatePostSet" href=""><i class="ri-star-line"></i> My Fev</a>
+            <a class="updatePostSet" href=""><i class="ri-notification-3-fill"></i>Notifation</a>
+
+            <a class="updatePostSet" href=""> <i class="ri-history-line"></i> Recent Posts</a>
+            <a class="updatePostSet" href=""> <i class="ri-share-fill"></i> Share Profile</a>
+            <a class="updatePostSet" href="/payment"> <i class="ri-money-dollar-circle-line"></i> Payment</a>
+            <a class="updatePostSet" href=""> <i class="ri-settings-2-line"></i>Settings</a>
+
+            <a class="logoutSet" a href="/logout"><i class="ri-logout-box-line"></i> Logout</a>
+
+        </div>
+        <div class="img_Dashboard">
+            <div class="imgTag">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">Nature</div>
+                        <div class="swiper-slide">Car</div>
+                        <div class="swiper-slide">Bike</div>
+                        <div class="swiper-slide">Home</div>
+                        <div class="swiper-slide">Sparrow</div>
+                        <div class="swiper-slide">Technology</div>
+                        <div class="swiper-slide">Birds</div>
+                        <div class="swiper-slide">Flowers</div>
+                        <div class="swiper-slide">Dog</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reelsContainer" style="justify-content: start;">
+
+                <% if(userP.posts.length> 0) { %> <% userP.posts.forEach(item=> { %>
+
+                        <% if(item.postReel) { %>
+                            <div class="reelState">
+                                <div class="reels">
+                                    <video src="<%= '/uploads/' + item.postReel %>" controls loop></video>
+                                </div>
+                                <small style="position: relative; top: 2px; opacity: .6;"></small>
+                                <p
+                                    style="display: flex; justify-content: space-between; align-items: center; opacity: .8;">
+
+                                    <%= item.title %>
+
+                                        <img style="object-fit: cover; width: 20px; height: 20px; border-radius: 50%;"
+                                            src="<%= 'uploads/' + user.profileImage %>" alt="User profile logo">
+                                </p>
+                                <p style="opacity: .8;"><%= item.description %></p>
+                                <div class="userProfileData">
+                                    <div class="postControl">
+                                        <button aria-label="Like"><i class="ri-heart-3-fill"></i></button>
+                                        <button aria-label="Comment"><i class="ri-chat-3-line"></i></button>
+                                        <button aria-label="Share"><i class="ri-share-line"></i></button>
+                                    </div>
+                                    <small>250 Likes</small>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% }) %>
+                                    <% } %>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        let times = document.querySelector('.times');
+        let leftNav = document.querySelector('.leftNav');
+        let rightArrow = document.querySelector('.rightArrow');
+        times.addEventListener('click', function () {
+            leftNav.style.width = "0px"
+        })
+
+        rightArrow.addEventListener('click', function(){
+    leftNav.style.width = "280px"
+  })
+
+        leftNav.addEventListener('blur', function (e) {
+            leftNav.style.width = "0px"
+        })
+    </script>
+
+    <%- include('partial/footer') %>

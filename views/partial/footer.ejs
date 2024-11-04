@@ -1,0 +1,121 @@
+
+
+<% if(chatbot === true) { %>
+   <div class="chatShowSet">
+    <div class="w-[300px] h-[450px] bg-zinc-300 fixed right-0 bottom-0 m-5 " style="z-index: 99;">
+            <button id="hidearea" class="absolute right-0 text-white w-[30px] h-[30px] bg-red-800 cursor-pointer">&times;</button>
+        <div class="p-4 relative h-full">
+         <h1 class="font-medium text-center flex" style="clear: both;">Bleepgot Assistent</h1>
+         
+         <small id="showTyping" class="text-green-700 font-medium hiddenTyping">typing....</small>
+     
+         <div class="chat_area text-white">
+            
+         </div>
+     
+     
+     
+         <div class="typedMessage flex mt-4 px-3 py-2 gap-2 w-full absolute bottom-2 left-0" style="border-top: 1px solid #4e4c4c3d;">
+             <input type="text" id="usermsg" placeholder="Type your message..."
+                    class="flex-1 text-white p-2 border border-gray-300 rounded-md bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+             <button id="sendButton" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                 <i class="ri-send-plane-fill"></i>
+             </button>
+         </div>
+         
+         
+        </div>
+     </div>
+   </div>
+
+     <audio hidden id="sendAudio" src="/assets/sendTest.mp3" controls></audio>
+     <audio hidden id="reAudio" src="/assets/reTest.mp3" controls></audio>
+     
+     <div title="ChatBot" id="chatbot" class="w-[70px] h-[70px] cursor-pointer m-5 bg-zinc-300 fixed rounded-full right-0 bottom-0 p-1">
+         <img src="assets/chatbot.gif" class="w-full h-full object-cover rounded-full" alt="">
+     </div>
+     <script src="https://cdn.socket.io/4.8.0/socket.io.min.js" integrity="sha384-OoIbkvzsFFQAG88r+IqMAjyOtYDPGO0cqK5HF5Uosdy/zUEGySeAzytENMDynREd" crossorigin="anonymous"></script>
+     <script>
+         let uuId;
+
+        const socket = io();
+ 
+        
+        
+       
+        let usermsg = document.getElementById('usermsg');
+        let showTyping = document.getElementById('showTyping');
+        let reAudio = document.getElementById('reAudio');
+        usermsg.addEventListener('input', function(){ 
+         socket.emit('typing')          
+        })
+
+
+        socket.on('typing', function(){
+          
+            showTyping.classList.remove('hiddenTyping');
+
+            setTimeout(() => {
+                showTyping.classList.add('hiddenTyping');
+            }, 2000);
+            
+        })
+        
+       
+        socket.on('your id', (id) => {
+            uuId = id;        
+        });
+
+        const sendButton = document.querySelector('#sendButton');
+        let sendAudio = document.getElementById('sendAudio');
+    
+     
+        
+        sendButton.addEventListener('click', () => {
+            if(usermsg.value){
+                socket.emit('chat message', usermsg.value);
+                usermsg.value = ""
+            }
+        });
+        
+        socket.on('chat message', async ({msg, userId}) => {
+          
+            const item = document.createElement('p');
+            item.textContent = msg;
+            if(userId === uuId){
+                await sendAudio.play()
+              item.classList.add('sent')
+             
+                
+            }else{
+                await reAudio.play();
+               item.classList.add('recevied')
+                
+            }
+
+            document.querySelector('.chat_area').appendChild(item)
+            
+        })
+        
+        let chatShowSet = document.querySelector('.chatShowSet');
+        let hidearea = document.getElementById('hidearea')
+        let chatbot = document.getElementById('chatbot');
+        chatbot.addEventListener('click', function(){
+          chatShowSet.classList.add('showChatArea')
+        });
+
+
+        // chatbot.addEventListener('blur', function(){
+        //     chatShowSet.classList.remove('showChatArea')
+        // })
+        
+
+        hidearea.addEventListener('click', function(){ 
+            chatShowSet.classList.remove('showChatArea')
+        })
+     </script>
+<%}%>
+
+
+</body>
+</html>
