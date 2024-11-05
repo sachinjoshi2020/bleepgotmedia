@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #000000ee;
+  background-color: #cfcece;
 }
 
 body::-webkit-scrollbar {
@@ -191,7 +191,7 @@ body::-webkit-scrollbar {
 
 .navBrand {
   width: 100%;
-  background-color: #131212;
+  background-color: #102025;
   display: flex;
   backdrop-filter: blur(6px);
   padding: 15px 20px;
@@ -323,7 +323,8 @@ body::-webkit-scrollbar {
 .leftNav {
   width: 20%;
   height: 100%;
-  background-color: #110f0f;
+  background-color: #102025;
+  font-style: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -350,6 +351,7 @@ body::-webkit-scrollbar {
 .updatePostSet {
   margin-top: 20px;
   text-decoration: none;
+  text-color:#0000;
   text-transform: capitalize;
   width: 50%;
   margin-left: -57px;
@@ -380,8 +382,9 @@ body::-webkit-scrollbar {
 .logoutSet {
   margin-top: 20px;
   text-decoration: none;
-  color: #fff;
-  background-color: rgb(255, 60, 0);
+  font-weight: bold;
+  color: #102025;
+  background-color: #fff;
   padding: 10px 30px;
   border-radius: 5px;
   display: flex;
@@ -430,12 +433,13 @@ body::-webkit-scrollbar {
 
 .swiper-slide {
   width: auto !important;
-  background-color: rgba(195, 195, 206, 0.212);
+  background-color: rgba(17, 29, 44, 0.445);
   color: #fff;
   padding: 8px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition-duration: 400ms;
+  font-weight: 400;
 
   &:hover {
     opacity: .6;
@@ -461,7 +465,8 @@ body::-webkit-scrollbar {
 
 .imgBox {
   position: relative;
-  color: #fff;
+  color: #102025;
+  font-weight: bold;
 }
 
 .imgBox p {
@@ -521,14 +526,14 @@ body::-webkit-scrollbar {
   height: 45px;
   margin-bottom: 20px;
   background-color: transparent;
-  border: 1px solid #ffffff55;
+  border: 1px solid #0000;
   padding: 0 20px;
-  color: #fff;
+  color: #000;
   border-radius: 5px;
 }
 
 .createPost form input::placeholder {
-  color: #fff;
+  color: #0000;
   text-transform: capitalize;
 
 }
@@ -564,7 +569,7 @@ body::-webkit-scrollbar {
   border: 0;
   outline: none;
   color: #000;
-  background-color: #fff;
+  background-color: #000;
   cursor: pointer;
 }
 
@@ -685,7 +690,7 @@ body::-webkit-scrollbar {
   .leftNav {
     width: 0%;
     position: fixed;
-    background-color: #000;
+    background-color: #12252cd5;
     z-index: 99;
     height: 100vh;
     top: 0;

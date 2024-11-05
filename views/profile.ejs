@@ -6,7 +6,7 @@
     <button class="times"><i class="ri-close-line"></i></button>
     <div class="userimgprofile">
       <img
-        src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/10337/10337609.png' %>"
+        src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://static.vecteezy.com/system/resources/previews/024/766/958/non_2x/default-male-avatar-profile-icon-social-media-user-free-vector.jpg' %>"
         alt=""
       />
     </div>
@@ -87,7 +87,7 @@
             alt=""
           />
         </div>
-        <small style="position: relative; top: 2px; opacity: 0.5"
+        <small style="position: relative; top: 2px; opacity: 1"
           ><%= element.user?.username? element.user.username : '' %></small
         >
         <p
@@ -120,16 +120,16 @@
                 <i class="ri-heart-3-fill"></i>
               </button>
               <% } else { %>
-              <button style="color: white">
+              <button style="color: black">
                 <i class="ri-heart-3-line"></i>
               </button>
               <% } %>
             </form>
-            <button><i class="ri-share-line"></i></button>
-            <button><i class="ri-download-line"></i></button>
+            <button style="color: black!important;"><i class="ri-share-line"></i></button>
+            <button style="color: black!important;"><i class="ri-download-line"></i></button>
           </div>
 
-          <small><%= element.likesData.length %> Likes</small>
+          <small class="text-gray-800 font-bold"><%= element.likesData.length %> Likes</small>
         </div>
       </div>
       <% } %> <% }) %>
