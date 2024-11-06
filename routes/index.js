@@ -228,7 +228,7 @@ router.post("/follow/:id", isLoggedIn, async function (req, res, next) {
     const userToFollow = await userSchema.findById(req.params.id);
     const currentUser = await userSchema.findById(req.user.id);
 
-    if(!userToFollow || !currentUser){
+    if (!userToFollow || !currentUser) {
       return res.status(500).send('User not found');
     }
     if (!currentUser.following.includes(userToFollow._id)) {
@@ -236,7 +236,7 @@ router.post("/follow/:id", isLoggedIn, async function (req, res, next) {
       userToFollow.followers.push(currentUser._id);
       await currentUser.save();
       await userToFollow.save();
-  }
+    }
     res.redirect('/myprofile')
   } catch (error) {
     console.log(error);
@@ -245,21 +245,21 @@ router.post("/follow/:id", isLoggedIn, async function (req, res, next) {
 
 router.post('/unfollow/:id', async (req, res) => {
   try {
-      const userToUnfollow = await userSchema.findById(req.params.id);
-      const currentUser = await userSchema.findById(req.user.id); // Assuming req.user is set
+    const userToUnfollow = await userSchema.findById(req.params.id);
+    const currentUser = await userSchema.findById(req.user.id); // Assuming req.user is set
 
-      if (!userToUnfollow || !currentUser) {
-          return res.status(404).send('User not found');
-      }
+    if (!userToUnfollow || !currentUser) {
+      return res.status(404).send('User not found');
+    }
 
-      currentUser.following.pull(userToUnfollow._id);
-      userToUnfollow.followers.pull(currentUser._id);
-      await currentUser.save();
-      await userToUnfollow.save();
+    currentUser.following.pull(userToUnfollow._id);
+    userToUnfollow.followers.pull(currentUser._id);
+    await currentUser.save();
+    await userToUnfollow.save();
 
-      res.redirect('/myprofile'); // Redirect to users page
+    res.redirect('/myprofile'); // Redirect to users page
   } catch (error) {
-      res.status(500).send('Server error');
+    res.status(500).send('Server error');
   }
 });
 
@@ -460,5 +460,23 @@ function isLoggedIn(req, res, next) {
     console.log(error);
   }
 }
+
+
+
+router.delete('/post/:id', isLoggedIn, async (req, res) => {
+  try {
+    const post = await postSchema.findById(req.params.id);
+
+    if (!post) {
+      return res.status(404).send('Post Not Found');
+    }
+
+    await post.remove();
+    res.send('profile');
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Error Deleting POST');
+  }
+});
 
 module.exports = router;

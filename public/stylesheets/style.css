@@ -102,7 +102,7 @@ body::-webkit-scrollbar {
 }
 
 ::placeholder {
-  color: #fff;
+  color: #000;
 }
 
 .submitRate {
@@ -351,7 +351,7 @@ body::-webkit-scrollbar {
 .updatePostSet {
   margin-top: 20px;
   text-decoration: none;
-  text-color:#0000;
+  text-color:#000;
   text-transform: capitalize;
   width: 50%;
   margin-left: -57px;
@@ -490,7 +490,7 @@ body::-webkit-scrollbar {
   background-color: transparent;
   border: none;
   outline: none;
-  color: #ffff;
+  color: #000;
 }
 
 .userProfileData {
@@ -510,6 +510,7 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
 }
 
 .createPost form input::placeholder {
@@ -518,7 +519,7 @@ body::-webkit-scrollbar {
 
 .createPost form h2 {
   margin-bottom: 20px;
-  color: #fff;
+  color: #000;
 }
 
 .createPost form input {
@@ -526,14 +527,14 @@ body::-webkit-scrollbar {
   height: 45px;
   margin-bottom: 20px;
   background-color: transparent;
-  border: 1px solid #0000;
+  border: 1px solid #000000c4;
   padding: 0 20px;
   color: #000;
   border-radius: 5px;
 }
 
 .createPost form input::placeholder {
-  color: #0000;
+  color: #000000b4;
   text-transform: capitalize;
 
 }
@@ -577,7 +578,8 @@ body::-webkit-scrollbar {
   width: 35%;
   height: 45px;
   background-color: #316caf;
-  color: #fff;
+  color: #000;
+  font-weight: bold;
   border-radius: 5px;
   border-radius: 5px;
   border: 0;

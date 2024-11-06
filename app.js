@@ -11,6 +11,7 @@ const dbConnection = require("./utils/dbConnect");
 const Stripe = require("stripe");
 const socketIO = require("socket.io");
 const http = require("http");
+const mehtodOverride = require('method-override');
 const dotenv = require("dotenv");
 const { log } = require("console");
 dotenv.config();
@@ -57,6 +58,9 @@ app.use(
     secret: process.env.SESSION_SECRET,
   })
 );
+
+
+app.use(mehtodOverride('_method'))
 
 app.use(passport.initialize());
 app.use(passport.session());
