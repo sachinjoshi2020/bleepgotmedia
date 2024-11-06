@@ -68,7 +68,7 @@
         </button>
       </div>
 
-      <h2 class="text-white text-center text-3xl capitalize">
+      <h2 class="text-gray-800 text-center text-3xl capitalize">
         Welcome <%= user.username %>
         <br />
         <small class="text-yellow-500 flex gap-8 justify-center items-center" style="font-size: 1rem">Followers: <%= user.followers.length %> <span class="text-green-500">Following : <%= user.following.length %> </span></small>
@@ -118,8 +118,8 @@
                 class="rounded-full w-[50px] h-[50px] object-cover border-2 border-gray-800"
               />
               <div class="text-center">
-                <h2 class="text-sm font-medium"><%= item.username %></h2>
-                <span class="text-green-500 text-sm">Active</span>
+                <h2 class="text-sm font-medium text-gray-800"><%= item.username %></h2>
+                <span class="text-green-500 text-sm font-bold">Active</span>
               </div>
 
               <% if (currentUser.following.includes(item._id)) { %>
