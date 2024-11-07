@@ -23,10 +23,10 @@
     <a class="updatePostSet" href="/updatePost">
       <i class="ri-upload-cloud-2-line"></i> Upload Picture</a
     >
-
+<!-- 
     <a class="updatePostSet" href="/updateReel">
       <i class="ri-upload-cloud-2-line"></i> Upload Reel</a
-    >
+    > -->
 
     <a class="updatePostSet" href="/myPosts"
       ><i class="ri-image-2-fill"></i> My Stuff</a
@@ -63,35 +63,35 @@
   </div>
   <div class="img_Dashboard">
     <form class=
-    "text-white  shadow-md p-20 rounded shadow-md w-[600px] relative" style="left: 50%; transform: translateX(-50%);">
-        <h2 class="text-2xl font-medium mb-6">Edit <span class="font-thin text-green-500"><%= user.username %></span> Profile</h2>
+    "text-white  shadow-md p-20 rounded shadow-md w-screen relative opacity-50" style="left: 50%; transform: translateX(-50%);" aria-disabled="true">
+        <h2 class="text-1xl font-medium mb-6">Edit <span class="font-bold text-green-900"><%= user.username %></span> Profile</h2>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-400" for="username">Username</label>
-            <input type="text" id="username" name="username" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required value="<%=  user.username %>">
+            <label class="block text-sm font-medium text-gray-900" for="username">Username</label>
+            <input type="text" id="username" name="username" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required value="<%=  user.username %>" readonly>
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-400" for="old-password">Old Password</label>
-            <input type="password" id="old-password" name="old-password" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
+            <label class="block text-sm font-medium text-gray-900" for="old-password">Old Password</label>
+            <input type="password" id="old-password" name="old-password" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required readonly>
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-400" for="new-password">New Password</label>
-            <input type="password" id="new-password" name="new-password" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
+            <label class="block text-sm font-medium text-gray-900" for="new-password">New Password</label>
+            <input type="password" id="new-password" name="new-password" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required readonly>
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-400" for="email">Email Address</label>
-            <input type="email" id="email" name="email" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required value="<%=  user.email %>">
+            <label class="block text-sm font-medium text-gray-900" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required value="<%=  user.email %>" readonly>
         </div>
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-400" for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
+            <label class="block text-sm font-medium text-gray-900" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required readonly>
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-400" for="gender">Gender</label>
+            <label class="block text-sm font-medium text-gray-900" for="gender">Gender</label>
             <select id="gender" name="gender" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" required>
                 <option value="">Select</option>
                 <option value="male">Male</option>
@@ -101,11 +101,11 @@
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-400" for="description">Short Description</label>
-            <textarea id="description" name="description" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" rows="3"></textarea>
+            <label class="block text-sm font-medium text-gray-900" for="description">Short Description</label>
+            <textarea id="description" name="description" class="mt-1 block w-full p-2 border border-gray-300 rounded bg-slate-700" rows="3" readonly></textarea>
         </div>
 
-        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Save Changes</button>
+        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600" disabled>Save Changes</button>
     </form>
     </div>
 

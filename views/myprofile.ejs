@@ -21,9 +21,9 @@
       <i class="ri-image-2-fill"></i> My Stuff
     </a>
 
-    <a class="updatePostSet" href="/reels">
+    <!-- <a class="updatePostSet" href="/reels">
       <i class="ri-video-line"></i> Reels
-    </a>
+    </a> -->
     <a class="updatePostSet" href="/myprofile">
       <i class="ri-user-line"></i> My Profile
     </a>
@@ -53,7 +53,7 @@
     </a>
   </div>
 
-  <div class="flex flex-col w-full items-center gap-8 p-10 px-20">
+  <div class="flex flex-col w-full items-center gap-2 p-4 ">
     <div class="profileheader flex w-full items-center flex-col gap-8">
       <div class="flex flex-col items-center justify-center relative w-[200px]">
         <img
@@ -71,10 +71,10 @@
       <h2 class="text-gray-800 text-center text-3xl capitalize">
         Welcome <%= user.username %>
         <br />
-        <small class="text-yellow-500 flex gap-8 justify-center items-center" style="font-size: 1rem">Followers: <%= user.followers.length %> <span class="text-green-500">Following : <%= user.following.length %> </span></small>
+        <small class="text-yellow-900 flex gap-8 font-bold justify-center items-center" style="font-size: 1rem">Followers: <%= user.followers.length %> <span class="text-green-900">Following : <%= user.following.length %> </span></small>
       </h2>
 
-      <div class="flex justify-center mt-4">
+      <div class="flex justify-center" style="margin-top: -20px;">
         <a
           href="/editSelfProfile"
           class="bg-blue-500 text-black font-bold font-medium rounded-md px-10 py-4 hover:bg-blue-600 transition duration-200"
@@ -86,8 +86,7 @@
       <p class="text-center text-black font-bold style="letter-spacing: 1px">
         <q>
           Unleash Your Creativity with Our Photo Uploading Platform! Capture and
-          share your memories effortlessly—join our vibrant community and
-          transform your snapshots into stunning galleries today!
+          share your memories effortlessly.
         </q>
       </p>
     </div>
@@ -107,11 +106,11 @@
         </button>
       </form>
 
-      <div class="mt-10">
-        <ul class="flex flex-wrap gap-4 justify-start w-full">
+      <div class="mt-10 ">
+        <ul class="flex flex-wrap gap-4 justify-center w-full">
           <% userAll.forEach(item => { %>
           <a href="/userProfiledata" class="">
-            <li class="flex w-[150px] flex-col justify-center items-center gap-4 p-4 text-white duration-200 hover:bg-gray-700 border border-gray-600 rounded-md">
+            <li class="flex w-[140px] flex-col justify-center items-center gap-4 p-4 text-white duration-200 hover:bg-gray-700 border border-gray-600 rounded-md">
               <img
                 src="<%= item.profileImage ? 'uploads/' + item.profileImage : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' %>"
                 alt="User"
