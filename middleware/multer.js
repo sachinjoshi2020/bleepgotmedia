@@ -1,20 +1,24 @@
+const dotenv = require('dotenv').config()
 const multer = require('multer');
-const fs = require('fs');
-const path = require('path');
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, '../public/uploads');
-    if(!fs.existsSync(uploadDir)){
-        fs.mkdirSync(uploadDir, {recursive : true})
-    }
-      cb(null, uploadDir)
-    },
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
-    }
-  })
-  
-  const upload = multer({ storage: storage })
+const cloudinary = require('cloudinary').v2;
+const multerStorageCloudinary = require('multer-storage-cloudinary').CloudinaryStorage;
 
-  module.exports = upload;
+// Set up Cloudinary credentials (usually placed in your .env file)
+cloudinary.config({
+  cloud_name: 'ddcf9gktr',
+  api_key: '127765667286757',
+  api_secret: 'Gmx7f_tR3jTXkpjMXHjKXiIUE9Q'
+});
+
+// Configure multer-storage-cloudinary to handle file uploads
+const storage = new multerStorageCloudinary({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'uploads', // Folder name here
+    allowedFormats: ['jpeg', 'png', 'jpg'],
+  },
+});
+
+const upload = multer({ storage: storage });
+
+module.exports = upload;

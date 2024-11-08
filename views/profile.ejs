@@ -5,8 +5,9 @@
     <div class="leftNav">
       <button class="times"><i class="ri-close-line"></i></button>
       <div class="userimgprofile">
+
         <img
-          src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://static.vecteezy.com/system/resources/previews/024/766/958/non_2x/default-male-avatar-profile-icon-social-media-user-free-vector.jpg' %>"
+          src="<%= user.profileImage ? user.profileImage : 'https://static.vecteezy.com/system/resources/previews/024/766/958/non_2x/default-male-avatar-profile-icon-social-media-user-free-vector.jpg' %>"
           alt="" />
       </div>
 
@@ -65,7 +66,7 @@
         <% posts.forEach(element=> { %> <% if(element.postImage) { %>
             <div class="imgBox">
               <div class="postUser">
-                <img src="<%= element?.postImage ? 'uploads/' + element.postImage : ''  %>" alt="" />
+                <img src="<%= element?.postImage ?  element.postImage : ''  %>" alt="" />
               </div>
               <small style="position: relative; top: 2px; opacity: 1">
                 <%= element.user?.username? element.user.username : '' %>
@@ -81,7 +82,7 @@
               width: 20px;
               height: 20px;
               border-radius: 50%;
-            " src="<%= element.user?.profileImage? '/uploads/' + element.user.profileImage : 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png' %>"
+            " src="<%= element.user?.profileImage?  element.user.profileImage : 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png' %>"
                     alt="" />
               </p>
 
@@ -107,7 +108,7 @@
                     <input type="hidden" name="_method" value="DELETE">
                     <button><i class="ri-delete-bin-6-line"></i></button>
                   </form>
-                  
+
 
                 </div>
 

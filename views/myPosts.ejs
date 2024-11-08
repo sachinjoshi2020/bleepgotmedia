@@ -6,7 +6,7 @@
     <button class="times"><i class="ri-close-line"></i></button>
     <div class="userimgprofile">
       <img
-        src="<%= user.profileImage ? 'uploads/' + user.profileImage : 'https://cdn-icons-png.flaticon.com/512/10337/10337609.png' %>"
+        src="<%= user.profileImage ? user.profileImage : 'https://cdn-icons-png.flaticon.com/512/10337/10337609.png' %>"
         alt=""
       />
     </div>
@@ -27,7 +27,7 @@
 
     <a class="updatePostSet" href="/myPosts"><i class="ri-image-2-fill"></i>  My Stuff</a>
 
-    <a class="updatePostSet" href="/reels"><i class="ri-video-line"></i> Reels</a>
+    <!-- <a class="updatePostSet" href="/reels"><i class="ri-video-line"></i> Reels</a> -->
 
     <a class="updatePostSet" href=""><i class="ri-star-line"></i> My Fev</a>
     <a class="updatePostSet" href=""><i class="ri-notification-3-fill"></i>Notifation</a>
@@ -62,7 +62,7 @@
       <% if(item.postImage) { %>
       <div class="imgBox">
         <div class="postUser">
-          <img src="<%= 'uploads/' + item.postImage %>" alt="" />
+          <img src="<%= item.postImage %>" alt="" />
         </div>
 
         <p
@@ -82,7 +82,7 @@
             <button><i class="ri-share-line"></i></button>
           </div>
 
-          <small>250 Likes</small>
+          <!-- <small>250 Likes</small> -->
         </div>
       </div>
       <% } %>

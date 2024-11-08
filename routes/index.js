@@ -311,7 +311,10 @@ router.post(
     try {
       const user = await userSchema.findById(req.user._id);
 
-      user.profileImage = filename;
+      user.profileImage = req.file.path;
+
+      console.log(user);
+      
 
       await user.save();
 
@@ -335,7 +338,7 @@ router.post(
         title,
         description,
         user: user._id,
-        postImage: req.file.filename,
+        postImage: req.file.path,
       });
 
       user.posts.push(post._id);
